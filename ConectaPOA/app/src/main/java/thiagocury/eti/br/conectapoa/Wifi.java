@@ -14,12 +14,11 @@ public class Wifi implements ClusterItem{
     private double Longitude;
     private double Latitude;
     private String Setor;
-    private Context context;
 
     public Wifi() {
     }
 
-    public Wifi(String empresa, String site, String nomeRede, String endereco, double longitude, double latitude, String setor, Context context) {
+    public Wifi(String empresa, String site, String nomeRede, String endereco, double longitude, double latitude, String setor) {
         Empresa = empresa;
         Site = site;
         NomeRede = nomeRede;
@@ -27,7 +26,6 @@ public class Wifi implements ClusterItem{
         Longitude = longitude;
         Latitude = latitude;
         Setor = setor;
-        this.context = context;
     }
 
     public String getEmpresa() {
@@ -85,6 +83,8 @@ public class Wifi implements ClusterItem{
     public void setSetor(String setor) {
         Setor = setor;
     }
+
+    //LATITUDE E LONGITUDE PARA O CLUSTER
 
     @Override
     public LatLng getPosition() {

@@ -1,35 +1,47 @@
 <resources>
-    <string name="app_name">ConectaPOA</string>
+
+    <!-- TÍTULO DO APP -->
+
+    <string name="app_name_aplication">Conecta  POA</string>
+
+    <!-- STRINGS DE DESCRIÇÃO -->
 
     <string name="descricao_wifi">Wifi</string>
     <string name="descricao_site">Site</string>
     <string name="descricao_endereco">Address</string>
-    <string name="title_activity_maps">Map</string>
+
+    <!-- STRINGS DO SOBRE -->
 
     <string name="as_tv_sobre">About App</string>
-    <string name="as_tv_versao">Version 1.0</string>
+    <string name="as_tv_app">App ConectaPOA</string>
     <string name="as_tv_ano">Year 2018</string>
     <string name="as_tv_desenvolverdor">Developer</string>
     <string name="as_tv_nome_lucas">Lucas Ferreira Pereira</string>
-    <string name="as_tv_email_lucas">lucas.ferreira.developer@gmail.com</string>
+    <string name="as_tv_email_lucas">lucasfpereira29@gmail.com</string>
     <string name="as_tv_parceiros">Advisor</string>
     <string name="as_tv_nome_thiago">Thiago Cury</string>
-    <string name="as_tv_app">App ConectaPOA</string>
-    <string name="redes_wifi">Wifi networks</string>
-    <string name="mapa">Map</string>
-    <string name="sobre">About</string>
-    <string name="erro">Error:</string>
-    <string name="site_inexistente">No registered site!</string>
-    <string name="endereco_inexistente">No registered address!</string>
-    <string name="designers">Designers</string>
-    <string name="as_tv_nome_carolynne">Carolynne Padilha</string>
     <string name="as_tv_email_thiago">thiagocury@gmail.com</string>
+    <string name="designers">Designers</string>
+    <string name="as_tv_nome_braian">Braian Zilio</string>
+    <string name="as_tv_email_braian">braianzilio@gmail.com</string>
+    <string name="as_tv_nome_carolynne">Carolynne Padilha</string>
     <string name="as_tv_email_carolynne">carodilha@gmail.com</string>
     <string name="as_tv_nome_felipe">Felipe Campos</string>
     <string name="as_tv_email_felipe">felipecampos395@hotmail.com</string>
+
+    <!-- STRINGS DO MENU -->
+
+    <string name="redes_wifi">Wifi networks</string>
+    <string name="mapa">Map</string>
+    <string name="sobre">About</string>
     <string name="sair">Exit</string>
+
+    <!-- OUTRAS STRINGS -->
+
+    <string name="erro">Error:</string>
+    <string name="site_inexistente">No registered site!</string>
+    <string name="endereco_inexistente">No registered address!</string>
     <string name="explicacao1">You have denied this permission before!</string>
     <string name="explicacao2">To make a call we need this permission!</string>
-    <string name="as_tv_nome_braian">Braian Zilio</string>
-    <string name="as_tv_email_braian">braianzilio@gmail.com</string>
+
 </resources>

@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -42,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
     private WifiAdapter adapter;
     private Toolbar toolbar;
     private Drawer result = null;
+    private Wifi wifi;
+    private MapsActivity latlngzoom;
+    private static final int Maps = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar_main);
         setSupportActionBar(toolbar);
 
-        toolbar.setTitle(getResources().getString(R.string.redes_wifi));
+        //##### MENU #####
 
         AccountHeader headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -81,7 +85,13 @@ public class MainActivity extends AppCompatActivity {
                                 break;
 
                             case 1:
+                                int zoom = 11;
+                                double lat = -30.0582850;
+                                double lng = -51.1787050;
                                 Intent it = new Intent(MainActivity.this,MapsActivity.class);
+                                it.putExtra("zoom",zoom);
+                                it.putExtra("lat",lat);
+                                it.putExtra("lng",lng);
                                 startActivity(it);
                                 break;
 
@@ -89,17 +99,42 @@ public class MainActivity extends AppCompatActivity {
                                 Intent sobre = new Intent(MainActivity.this,SobreActivity.class);
                                 startActivity(sobre);
                                 break;
+
                             case 3:
                                 finish();
+                                break;
                         }
                         return false;
                     }
                 }).build();
         result.setSelection(0);
 
+        //##### ADAPTER E JSON #####
+
         rvWifi = findViewById(R.id.ma_rv_wifi);
 
-        adapter = new WifiAdapter(MainActivity.this,new ArrayList<Wifi>(0));
+        //##### ADAPTER COM CLICK E LONGCLICK #####
+
+        adapter = new WifiAdapter(MainActivity.this, new ArrayList<Wifi>(0), new WifiAdapter.ClickListener() {
+            @Override
+            public void onItemClick(int position, View v) {
+                wf = adapter.getWf();
+                wifi = wf.get(position);
+                int zoom = 17;
+                double lat = wifi.getLatitude();
+                double lng = wifi.getLongitude();
+                Intent intent = new Intent(MainActivity.this,MapsActivity.class);
+                intent.putExtra("zoom",zoom);
+                intent.putExtra("lat",lat);
+                intent.putExtra("lng",lng);
+                startActivityForResult(intent,Maps);
+            }
+
+            @Override
+            public void onItemLongClick(int position, View v) {
+            }
+        });
+
         rvWifi.setAdapter(adapter);
         rvWifi.setHasFixedSize(true);
         rvWifi.setLayoutManager(new LinearLayoutManager(this));
@@ -142,25 +177,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
-        adapter.setOnItemClickListener(new WifiAdapter.ClickListener() {
-            @Override
-            public void onItemClick(int position, View v) {
-
-            }
-
-            @Override
-            public void onItemLongClick(int position, View v) {
-
-            }
-        });
-
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+
         result.setSelection(0);
+
         if(getIntent().getBooleanExtra("SAIR",false)){
             finish();
         }
